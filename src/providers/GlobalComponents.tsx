@@ -6,7 +6,12 @@ import { createContext, useContext } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-const GlobalComponentContext = createContext({ Button, Input, Label });
+
+const GlobalComponentContext = createContext({
+  Button,
+  Input,
+  Label,
+});
 
 export function GlobalComponentProvider({
   children,
@@ -21,5 +26,5 @@ export function GlobalComponentProvider({
 }
 
 export function useGlobalComponent() {
-  return useContext(GlobalComponentContext); // This will now work as it's inside a client component
+  return useContext(GlobalComponentContext);
 }
