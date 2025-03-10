@@ -1,18 +1,17 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
+import type { NextRequest } from "next/server";
 
-export function middleware(request: NextRequest) {
-    const token = request.cookies.get("token");
+export function middleware(req: NextRequest) {
+  const token = req.cookies.get("token")?.value; // ดึงค่าจริงของ token
 
-    if (!token) {
-        // ถ้าไม่มี token ให้ลบ cookie ที่เกี่ยวข้องก่อนจะไปหน้า login
-        const response = NextResponse.redirect(new URL("/login", request.url));
-        response.cookies.set("token", "", { path: "/", expires: new Date(0) }); // เคลียร์ token
-        return response;
-    }
+  if (!token) {
+    return NextResponse.redirect(new URL("/login", req.url));
+  }
 
-    return NextResponse.next(); // ถ้ามี token ให้ทำงานต่อไป
+  return NextResponse.next();
 }
 
+// ✅ ใช้ wildcard `:path*` เพื่อให้ Middleware ทำงานกับทุก path ที่อยู่ภายใต้เส้นทางนั้น
 export const config = {
-    matcher: ["/dashboard", "/profile", "/settings"],
+  matcher: ["/dashboard/:path*", "/profile/:path*", "/settings/:path*"],
 };

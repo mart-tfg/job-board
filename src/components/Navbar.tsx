@@ -3,28 +3,35 @@ import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import logoJob from "@/assets/img/logo.png";
 import Link from "next/link";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+
 import {
   Navbar as NavbarComponent,
   NavbarLeft,
   NavbarRight,
 } from "@/components/ui/navbar";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu } from "lucide-react";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 export default function Navbar() {
   return (
     <header className="sticky top-0 z-50 -mb-4 px-4 pb-4">
-      <div className="fade-bottom bg-background/8 absolute left-0 h-24 w-full backdrop-blur-lg"></div>
-      <div className="max-w-container relative mx-auto">
+      <div className="fade-bottom bg-background/80 absolute left-0 h-24 w-full backdrop-blur-lg "></div>
+      <div className="max-w-container relative mx-auto pl-10 pr-10">
         <NavbarComponent>
           <NavbarLeft>
             <Link
-              href="/"
+              href="/dashboard"
               className="flex items-center gap-2 text-xl font-bold"
             >
               <Image src={logoJob} alt="Logo" width={80} height={80} />
             </Link>
-            <Navigation />
           </NavbarLeft>
           <NavbarRight>
             <Button
@@ -32,48 +39,25 @@ export default function Navbar() {
               asChild
               className=" cursor-pointer bg-[#043262]"
             >
-              <Link href="/">Sign in</Link>
+              <Link href="/login">Sign in</Link>
             </Button>
-            <Sheet>
-              <SheetTrigger asChild>
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className="shrink-0 md:hidden"
-                >
-                  <Menu className="size-5" />
-                  <span className="sr-only">Toggle navigation menu</span>
-                </Button>
-              </SheetTrigger>
-              <SheetContent side="right">
-                <nav className="grid gap-6 text-lg font-medium">
-                  <Link
-                    href="/"
-                    className="flex items-center gap-2 text-xl font-bold"
-                  >
-                    <span>Launch UI</span>
-                  </Link>
-                  <Link
-                    href="/"
-                    className="text-muted-foreground hover:text-foreground"
-                  >
-                    Getting Started
-                  </Link>
-                  <Link
-                    href="/"
-                    className="text-muted-foreground hover:text-foreground"
-                  >
-                    Components
-                  </Link>
-                  <Link
-                    href="/"
-                    className="text-muted-foreground hover:text-foreground"
-                  >
-                    Documentation
-                  </Link>
-                </nav>
-              </SheetContent>
-            </Sheet>
+            <DropdownMenu>
+              <DropdownMenuTrigger>
+                <Avatar>
+                  <AvatarImage src="https://github.com/shadcn.png" />
+                  <AvatarFallback>CN</AvatarFallback>
+                </Avatar>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent>
+                <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem>Profile</DropdownMenuItem>
+                <DropdownMenuItem>Saved</DropdownMenuItem>
+                <DropdownMenuItem>Application History</DropdownMenuItem>
+
+                <DropdownMenuItem>Logout</DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
           </NavbarRight>
         </NavbarComponent>
       </div>
