@@ -1,4 +1,4 @@
-"use client";
+"use client"; // เพิ่มบรรทัดนี้ที่ด้านบนของไฟล์
 
 import { useGlobalComponent } from "@/providers/GlobalComponents";
 import Image from "next/image";
@@ -6,26 +6,24 @@ import logoJob from "@/assets/img/logo.jpg";
 import { useState } from "react";
 import { useLoading } from "@/context/LoadingContext";
 import { useEffect } from "react";
-import { useRouter } from "next/navigation";
 
-export default function Login() {
+export default function Register() {
   const { Button, Input, Label } = useGlobalComponent();
-  const { setIsLoading } = useLoading();
-  const router = useRouter();
+  const { setIsLoading } = useLoading(); // ใช้ setIsLoading เพื่อจัดการสถานะการโหลด
 
   useEffect(() => {
-    // เคลียร์ cookies เมื่อเข้ามาที่หน้า login
-    document.cookie = "token=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT";
     setIsLoading(true);
     setTimeout(() => {
       setIsLoading(false);
-    }, 1000);
+    }, 5000);
   }, [setIsLoading]);
 
   // State to store the form data as an object
   const [formData, setFormData] = useState({
+    name: "",
     email: "",
     password: "",
+    confirmPassword: "",
   });
 
   // Handle form change
@@ -38,32 +36,38 @@ export default function Login() {
   };
 
   // Handle form submission
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
 
-    if (
-      formData.email === "buyoopak@gmail.com" &&
-      formData.password === "1234"
-    ) {
-      // Set token in cookies on successful login
-      document.cookie = "token=mocked-token; path=/"; // Set a mock token
-
-      // Redirect to dashboard
-      router.push("/dashboard");
-    } else {
-      alert("Invalid credentials");
+    // Validate if password and confirmPassword match
+    if (formData.password !== formData.confirmPassword) {
+      alert("Passwords do not match!");
+      setIsLoading(false);
+      return;
     }
 
-    setIsLoading(false);
+    // Here you can handle the registration logic, e.g., send formData to an API
+    console.log("Registration Data:", formData);
   };
 
   return (
     <div className="min-h-[100vh] bg-[ #ffffff] sm:bg-[#043262] flex justify-center items-center text-[#2d3f4b]">
-      <div className="bg-[white] pl-5 pr-5 pb-2 w-[50vh] h-[50vh] flex justify-center items-center flex-col rounded-2xl">
+      <div className="bg-[white] pl-5 pr-5 pb-4 w-[50vh]  flex justify-center items-center flex-col rounded-2xl">
         <Image src={logoJob} alt="Logo" width={150} height={150} />
         <form onSubmit={handleSubmit} className="w-[100%] text-center">
           <div className="w-[100%]">
+            <Label className="text-[#2d3f4b]">Full Name</Label>
+            <Input
+              className="mt-[8px]"
+              type="text"
+              name="name" // Add name to identify the field
+              value={formData.name} // Use formData for value
+              onChange={handleChange} // Use handleChange for all fields
+              required
+            />
+          </div>
+          <div className="mt-4 w-[100%]">
             <Label className="text-[#2d3f4b]">Email</Label>
             <Input
               className="mt-[8px]"
@@ -85,8 +89,19 @@ export default function Login() {
               required
             />
           </div>
+          <div className="mt-4 w-[100%]">
+            <Label className="text-[#2d3f4b]">Confirm Password</Label>
+            <Input
+              className="mt-[8px]"
+              type="password"
+              name="confirmPassword"
+              value={formData.confirmPassword}
+              onChange={handleChange}
+              required
+            />
+          </div>
           <Button type="submit" className="mt-8 cursor-pointer bg-[#043262]">
-            Log in
+            Register
           </Button>
         </form>
       </div>
