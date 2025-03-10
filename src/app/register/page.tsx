@@ -2,7 +2,7 @@
 
 import { useGlobalComponent } from "@/providers/GlobalComponents";
 import Image from "next/image";
-import logoJob from "@/assets/img/logo.jpg";
+import logoJob from "@/assets/img/logo.png";
 import { useState } from "react";
 import { useLoading } from "@/context/LoadingContext";
 import { useEffect } from "react";

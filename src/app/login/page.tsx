@@ -2,7 +2,7 @@
 
 import { useGlobalComponent } from "@/providers/GlobalComponents";
 import Image from "next/image";
-import logoJob from "@/assets/img/logo.jpg";
+import logoJob from "@/assets/img/logo.png";
 import { useState } from "react";
 import { useLoading } from "@/context/LoadingContext";
 import { useEffect } from "react";
@@ -60,7 +60,7 @@ export default function Login() {
 
   return (
     <div className="min-h-[100vh] bg-[ #ffffff] sm:bg-[#043262] flex justify-center items-center text-[#2d3f4b]">
-      <div className="bg-[white] pl-5 pr-5 pb-2 w-[50vh] h-[50vh] flex justify-center items-center flex-col rounded-2xl">
+      <div className="bg-[white] pl-5 pr-5 pb-4 w-[50vh]  flex justify-center items-center flex-col rounded-2xl">
         <Image src={logoJob} alt="Logo" width={150} height={150} />
         <form onSubmit={handleSubmit} className="w-[100%] text-center">
           <div className="w-[100%]">
@@ -88,6 +88,7 @@ export default function Login() {
           <Button type="submit" className="mt-8 cursor-pointer bg-[#043262]">
             Log in
           </Button>
+          <div className="mt-8">{"Don't have an account? Sign up"}</div>
         </form>
       </div>
     </div>

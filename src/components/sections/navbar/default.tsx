@@ -1,38 +1,36 @@
-import Navigation from "@/components/ui/navigation";
-import { Button } from "@/components/ui/button";
-import Image from "next/image";
-import logoJob from "@/assets/img/logo.png";
-import Link from "next/link";
+import Navigation from "../../ui/navigation";
+import { Button } from "../../ui/button";
 import {
   Navbar as NavbarComponent,
   NavbarLeft,
   NavbarRight,
-} from "@/components/ui/navbar";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+} from "../../ui/navbar";
+import { Sheet, SheetContent, SheetTrigger } from "../../ui/sheet";
 import { Menu } from "lucide-react";
+import LaunchUI from "../../logos/launch-ui";
 
 export default function Navbar() {
   return (
     <header className="sticky top-0 z-50 -mb-4 px-4 pb-4">
-      <div className="fade-bottom bg-background/8 absolute left-0 h-24 w-full backdrop-blur-lg"></div>
+      <div className="fade-bottom bg-background/15 absolute left-0 h-24 w-full backdrop-blur-lg"></div>
       <div className="max-w-container relative mx-auto">
         <NavbarComponent>
           <NavbarLeft>
-            <Link
+            <a
               href="/"
               className="flex items-center gap-2 text-xl font-bold"
             >
-              <Image src={logoJob} alt="Logo" width={80} height={80} />
-            </Link>
+              <LaunchUI />
+              Launch UI
+            </a>
             <Navigation />
           </NavbarLeft>
           <NavbarRight>
-            <Button
-              variant="default"
-              asChild
-              className=" cursor-pointer bg-[#043262]"
-            >
-              <Link href="/">Sign in</Link>
+            <a href="/" className="hidden text-sm md:block">
+              Sign in
+            </a>
+            <Button variant="default" asChild>
+              <a href="/">Get Started</a>
             </Button>
             <Sheet>
               <SheetTrigger asChild>
@@ -47,30 +45,30 @@ export default function Navbar() {
               </SheetTrigger>
               <SheetContent side="right">
                 <nav className="grid gap-6 text-lg font-medium">
-                  <Link
+                  <a
                     href="/"
                     className="flex items-center gap-2 text-xl font-bold"
                   >
                     <span>Launch UI</span>
-                  </Link>
-                  <Link
+                  </a>
+                  <a
                     href="/"
                     className="text-muted-foreground hover:text-foreground"
                   >
                     Getting Started
-                  </Link>
-                  <Link
+                  </a>
+                  <a
                     href="/"
                     className="text-muted-foreground hover:text-foreground"
                   >
                     Components
-                  </Link>
-                  <Link
+                  </a>
+                  <a
                     href="/"
                     className="text-muted-foreground hover:text-foreground"
                   >
                     Documentation
-                  </Link>
+                  </a>
                 </nav>
               </SheetContent>
             </Sheet>

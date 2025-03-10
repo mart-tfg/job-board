@@ -6,6 +6,8 @@ import { GlobalComponentProvider } from "@/providers/GlobalComponents";
 import { LoadingProvider } from "@/context/LoadingContext";
 import { LoadingSpinner } from "@/components/ui/loadingSpinner";
 import { useLoading } from "@/context/LoadingContext";
+import Navbar from "@/components/navbar";
+import { usePathname } from "next/navigation";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -20,6 +22,8 @@ const geistMono = Geist_Mono({
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
+  const pathname = usePathname();
+  const hideNavbar = pathname === "/login" || pathname === "/register";
   return (
     <html lang="en">
       <body
@@ -27,6 +31,7 @@ export default function RootLayout({
       >
         <LoadingProvider>
           <LoadingComponent />
+          {!hideNavbar && <Navbar />}
           <GlobalComponentProvider>{children}</GlobalComponentProvider>
         </LoadingProvider>
       </body>
