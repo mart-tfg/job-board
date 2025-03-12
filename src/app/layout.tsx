@@ -8,6 +8,7 @@ import { LoadingSpinner } from "@/components/ui/loadingSpinner";
 import { useLoading } from "@/context/LoadingContext";
 import Navbar from "@/components/navbar";
 import { usePathname } from "next/navigation";
+import { AuthProvider } from "@/context/AuthContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,8 +32,10 @@ export default function RootLayout({
       >
         <LoadingProvider>
           <LoadingComponent />
-          {!hideNavbar && <Navbar />}
-          <GlobalComponentProvider>{children}</GlobalComponentProvider>
+          <AuthProvider>
+            {!hideNavbar && <Navbar />}
+            <GlobalComponentProvider>{children}</GlobalComponentProvider>
+          </AuthProvider>
         </LoadingProvider>
       </body>
     </html>

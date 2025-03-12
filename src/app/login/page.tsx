@@ -8,11 +8,13 @@ import { useState } from "react";
 import { useLoading } from "@/context/LoadingContext";
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
+import { useAuth } from "@/context/AuthContext";
 
 export default function Login() {
   const { Button, Input, Label } = useGlobalComponent();
   const { setIsLoading } = useLoading();
   const router = useRouter();
+  const { setToken } = useAuth();
 
   useEffect(() => {
     // เคลียร์ cookies เมื่อเข้ามาที่หน้า login
@@ -48,10 +50,15 @@ export default function Login() {
       formData.password === "1234"
     ) {
       // Set token in cookies on successful login
-      document.cookie = "token=mocked-token; path=/"; // Set a mock token
+      const token = "mocked-token"; // สมมติว่าได้ token จริงจาก API
 
+      // บันทึก token ลง Cookies
+      document.cookie = `token=${token}; path=/`;
+
+      // อัปเดต Token ใน Context
+      setToken(token);
       // Redirect to dashboard
-      router.push("/dashboard");
+      router.push("/board");
     } else {
       alert("Invalid credentials");
     }
