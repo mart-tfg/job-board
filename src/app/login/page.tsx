@@ -45,10 +45,7 @@ export default function Login() {
     e.preventDefault();
     setIsLoading(true);
 
-    if (
-      formData.email === "buyoopak@gmail.com" &&
-      formData.password === "1234"
-    ) {
+    if (formData.email === "user@gmail.com" && formData.password === "1234") {
       // Set token in cookies on successful login
       const token = "mocked-token"; // สมมติว่าได้ token จริงจาก API
 

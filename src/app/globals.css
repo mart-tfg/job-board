@@ -1,6 +1,21 @@
+@import url("https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" );
 @import "tailwindcss";
 
 @plugin "tailwindcss-animate";
+
+body {
+  font-family: "Prompt", sans-serif; /* Set Kanit as the default font for body */
+}
+
+/* Apply specific fonts to headings or other elements */
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Prompt", sans-serif; /* Use Nunito for headings */
+}
+
+/* Optional: If you want to use Sarabun for other elements */
+p, span, a, li {
+  font-family: "Prompt", sans-serif; /* Use Sarabun for paragraphs, links, and list items */
+}
 
 @custom-variant dark (&:is(.dark *));
 
