@@ -3,6 +3,7 @@
 import { useGlobalComponent } from "@/providers/GlobalComponents";
 import Image from "next/image";
 import logoJob from "@/assets/img/logo.png";
+import Link from "next/link";
 import { useState } from "react";
 import { useLoading } from "@/context/LoadingContext";
 import { useEffect } from "react";
@@ -88,7 +89,12 @@ export default function Login() {
           <Button type="submit" className="mt-8 cursor-pointer bg-[#043262]">
             Log in
           </Button>
-          <div className="mt-8">{"Don't have an account? Sign up"}</div>
+          <div className="mt-8">
+            {" Don't have an account? "}
+            <Link href="/register" className="underline">
+              Sign up
+            </Link>
+          </div>
         </form>
       </div>
     </div>

@@ -1,4 +1,3 @@
-import Navigation from "@/components/ui/navigation";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import logoJob from "@/assets/img/logo.png";

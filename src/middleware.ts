@@ -13,5 +13,5 @@ export function middleware(req: NextRequest) {
 
 // ✅ ใช้ wildcard `:path*` เพื่อให้ Middleware ทำงานกับทุก path ที่อยู่ภายใต้เส้นทางนั้น
 export const config = {
-  matcher: ["/dashboard/:path*", "/profile/:path*", "/settings/:path*"],
+  matcher: [],
 };

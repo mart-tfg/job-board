@@ -12,7 +12,6 @@ export default function Register() {
   const { setIsLoading } = useLoading(); // ใช้ setIsLoading เพื่อจัดการสถานะการโหลด
 
   useEffect(() => {
-    setIsLoading(true);
     setTimeout(() => {
       setIsLoading(false);
     }, 5000);
