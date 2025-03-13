@@ -44,7 +44,7 @@ export default function CardJob({ jobs }: CardJobProps) {
     setTimeout(() => setIsLoading(false), 1000)
   }, [setIsLoading])
 
-  const fetchJobDetail = async (id: number) => {
+  const fetchJobDetail = async (id: string) => {
     setIsLoading(true)
     try {
       const response = await fetch(`/api/job/${id}`)
@@ -72,7 +72,7 @@ export default function CardJob({ jobs }: CardJobProps) {
                   <Card
                     key={job.id}
                     className="cursor-pointer"
-                    onClick={() => fetchJobDetail(job.id)}
+                    onClick={() => fetchJobDetail(job.id.toString())}
                   >
                     <CardHeader>
                       <div className="flex justify-between">
@@ -117,7 +117,7 @@ export default function CardJob({ jobs }: CardJobProps) {
               <Card
                 key={job.id}
                 className="cursor-pointer"
-                onClick={() => fetchJobDetail(job.id)}
+                onClick={() => fetchJobDetail(job.id.toString())}
               >
                 <CardHeader>
                   <div className="flex justify-between">

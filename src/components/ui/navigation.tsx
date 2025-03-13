@@ -63,7 +63,7 @@ export default function Navigation() {
             <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
               <li className="row-span-3">
                 <NavigationMenuLink asChild>
-                  <a
+                  <Link
                     className="from-muted/30 to-muted/10 flex h-full w-full flex-col justify-end rounded-md bg-linear-to-b p-6 no-underline outline-hidden select-none focus:shadow-md"
                     href="/"
                   >
@@ -75,7 +75,7 @@ export default function Navigation() {
                       Landing page template built with React, Shadcn/ui and
                       Tailwind that you can copy/paste into your project.
                     </p>
-                  </a>
+                  </Link>
                 </NavigationMenuLink>
               </li>
               <ListItem href="/" title="Introduction">
@@ -98,7 +98,7 @@ export default function Navigation() {
                 <ListItem
                   key={component.title}
                   title={component.title}
-                  href="/"
+                  href={component.href}
                 >
                   {component.description}
                 </ListItem>
@@ -107,7 +107,7 @@ export default function Navigation() {
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <Link href="/" legacyBehavior passHref>
+          <Link href="/">
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
               Documentation
             </NavigationMenuLink>
@@ -122,24 +122,26 @@ function ListItem({
   className,
   title,
   children,
+  href,
   ...props
-}: React.ComponentProps<"a"> & { title: string }) {
+}: React.ComponentProps<typeof Link> & { title: string }) {
   return (
     <li>
       <NavigationMenuLink asChild>
-        <a
+        <Link
           data-slot="list-item"
           className={cn(
             "hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground block space-y-1 rounded-md p-3 leading-none no-underline outline-hidden transition-colors select-none",
             className,
           )}
+          href={href}
           {...props}
         >
           <div className="text-sm leading-none font-medium">{title}</div>
           <p className="text-muted-foreground line-clamp-2 text-sm leading-snug">
             {children}
           </p>
-        </a>
+        </Link>
       </NavigationMenuLink>
     </li>
   );
