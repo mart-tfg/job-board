@@ -6,7 +6,7 @@ import { GlobalComponentProvider } from "@/providers/GlobalComponents";
 import { LoadingProvider } from "@/context/LoadingContext";
 import { LoadingSpinner } from "@/components/ui/loadingSpinner";
 import { useLoading } from "@/context/LoadingContext";
-import Navbar from "@/components/navbar";
+import Navbar from "@/components/Navbar";
 import { usePathname } from "next/navigation";
 import { AuthProvider } from "@/context/AuthContext";
 
