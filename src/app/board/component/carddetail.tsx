@@ -33,7 +33,7 @@ interface CardDetailProps {
 }
 
 export default function CardDetail({ job_detail }: CardDetailProps) {
-  const {CardContent, CardDescription, CardFooter, CardHeader, CardTitle } = useGlobalComponent();
+  const {CardContent, CardDescription, CardFooter, CardHeader, CardTitle,Card } = useGlobalComponent();
   const { setIsLoading } = useLoading();
 
   useEffect(() => {
@@ -42,9 +42,9 @@ export default function CardDetail({ job_detail }: CardDetailProps) {
   }, [setIsLoading]);
 
   return (
-    <div className="w-[100%] md:block hidden">
+    <div className="w-[100%]">
       {job_detail ? (
-        <div className="min-h-[90vh]">
+        <Card className="min-h-[90vh]">
           <CardHeader>
             <Image src={job_detail.logo} alt="Logo" width={1000} height={100} />
             <CardTitle>
@@ -107,24 +107,11 @@ export default function CardDetail({ job_detail }: CardDetailProps) {
                 </div>
               )}
             </CardTitle>
-            {/* แสดง benefits */}
-            {/* {job_detail.benefits.length > 0 && (
-              <div className="mt-4">
-                <h3 className="text-lg font-semibold">Benefits:</h3>
-                <ul className="list-disc pl-5">
-                  {job_detail.benefits.map((benefit, index) => (
-                    <li key={index}>
-                      <strong>{benefit.title}:</strong> {benefit.description}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )} */}
           </CardContent>
           <CardFooter>
             <p>{job_detail.data_ago}</p>
           </CardFooter>
-        </div>
+        </Card>
       ) : (
         <div>Select a job to view details</div>
       )}

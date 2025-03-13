@@ -66,40 +66,10 @@ export default function CardJob({ jobs }: CardJobProps) {
     <div>
       {/* Mobile and Tablet View */}
       <div className="block lg:hidden">
-
-        <div className="flex w-full gap-8">
-          <div className="flex flex-col gap-8 w-full">
-            {jobs.map((job) => (
-              <Card key={job.id} className="cursor-pointer" onClick={() => fetchJobDetail(job.id)}>
-                <CardHeader>
-                  <div className="flex justify-between">
-                    <div>
-                      <CardTitle><div className="text-[24px]">{job.jobTitle}</div></CardTitle>
-                      <CardDescription>{job.subTitle}</CardDescription>
-                    </div>
-                    <div>
-                      <Image src={job.logo} alt="Logo" width={50} height={50} />
-                    </div>
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <p>{job.desc}</p>
-                </CardContent>
-                <CardFooter>
-                  <p>{job.timeAgo}</p>
-                </CardFooter>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* Desktop View */}
-      <div className="hidden lg:block">
         <Sheet>
           <SheetTrigger>
             <div className="flex w-full gap-8">
-              <div className="grid grid-cols-4 gap-8 w-full text-start">
+              <div className="flex  flex-col gap-8 w-full text-start">
                 {jobs.map((job) => (
                   <Card
                     key={job.id}
@@ -132,12 +102,49 @@ export default function CardJob({ jobs }: CardJobProps) {
           </SheetTrigger>
           <SheetContent className="rounded-l-2xl">
             <SheetHeader>
-              <ScrollArea className="h-[95%] w-[350px] rounded-md mt-8">
+              <ScrollArea className="h-[87vh] w-[100%] rounded-md mt-8">
                 <CardDetail job_detail={job_detail} />
               </ScrollArea>
             </SheetHeader>
           </SheetContent>
         </Sheet>
+      </div>
+
+      {/* Desktop View */}
+      <div className="hidden lg:block">
+
+        <div className="flex w-full gap-8">
+          <div className="flex  flex-col  gap-8 w-full text-start">
+            {jobs.map((job) => (
+              <Card
+                key={job.id}
+                className="cursor-pointer"
+                onClick={() => fetchJobDetail(job.id)}
+              >
+                <CardHeader>
+                  <div className="flex justify-between">
+                    <div>
+                      <CardTitle>
+                        <div className="text-[24px]">{job.jobTitle}</div>
+                      </CardTitle>
+                      <CardDescription>{job.subTitle}</CardDescription>
+                    </div>
+                    <div>
+                      <Image src={job.logo} alt="Logo" width={50} height={50} />
+                    </div>
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <p>{job.desc}</p>
+                </CardContent>
+                <CardFooter>
+                  <p>{job.timeAgo}</p>
+                </CardFooter>
+              </Card>
+            ))}
+          </div><CardDetail job_detail={job_detail} />
+        </div>
+
       </div>
     </div>
 
