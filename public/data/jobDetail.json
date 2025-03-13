@@ -1,44 +1,120 @@
 {
   "1": {
     "id": 1,
-    "title": "Frontend Developer",
-    "company": "Tech Innovators Co., Ltd.",
-    "location": "กรุงเทพมหานคร, ไทย",
-    "salary": "50,000 - 80,000 THB",
-    "desc": "รับผิดชอบในการออกแบบและพัฒนาส่วนหน้า (UI) ของเว็บไซต์และเว็บแอปพลิเคชัน โดยใช้ HTML, CSS, JavaScript และ React.js หรือ Vue.js",
-    "requirements": [
-      "มีประสบการณ์ในการพัฒนาเว็บด้วย HTML, CSS, และ JavaScript",
-      "สามารถใช้ React.js หรือ Vue.js ได้อย่างชำนาญ",
-      "มีความเข้าใจเกี่ยวกับ RESTful APIs และ Web Services",
-      "สามารถทำงานเป็นทีม และมีทักษะการสื่อสารที่ดี"
-    ],
+    "jobTitle": "Web Developer",
+    "companyName": "Tech Innovators Ltd.",
+    "salary": "50,000 - 70,000 THB",
+    "location": "Bangkok, Thailand",
     "benefits": [
-      "โบนัสประจำปี",
-      "ประกันสุขภาพ",
-      "Flexible working hours",
-      "Work from home option"
+      {"desc": "Health insurance"},
+      {"desc": "Paid vacation"},
+      {"desc": "Annual performance bonus"},
+      {"desc": "Remote work option"}
     ],
-    "data_posted": "2025-03-10"
+    "vacancy": 5,
+    "description": "As a Web Developer at Tech Innovators Ltd., you will be responsible for building and maintaining web applications, collaborating with designers, and ensuring the functionality of various features across our websites.",
+    "responsibilities": [
+      {"desc": "Develop and maintain web applications"},
+      {"desc": "Collaborate with designers to create UI/UX features"},
+      {"desc": "Optimize applications for performance and security"},
+      {"desc": "Write clean, efficient, and scalable code"}
+    ],
+    "qualifications_and_skills": [
+      {"desc": "Bachelor's degree in Computer Science or related field"},
+      {"desc": "3+ years of experience in web development"},
+      {"desc": "Proficiency in HTML, CSS, JavaScript, React, Node.js"},
+      {"desc": "Strong knowledge of databases (SQL, NoSQL)"},
+      {"desc": "Familiarity with version control systems (Git)"},
+      {"desc": "Excellent problem-solving skills"}
+    ],
+    "logo": "https://dummyimage.com/1000x250/000/fff&text=WD",
+    "aboutCompany": "Tech Innovators Ltd. is a leading company specializing in web development and digital solutions. We strive to innovate and provide cutting-edge services to clients around the world."
   },
   "2": {
     "id": 2,
-    "title": "Graphic Designer",
-    "company": "Creative Studio Ltd.",
-    "location": "เชียงใหม่, ไทย",
-    "salary": "35,000 - 60,000 THB",
-    "desc": "ออกแบบสื่อกราฟิกสำหรับโฆษณาและโซเชียลมีเดีย รวมถึงแบรนด์ดิ้งและ UI design",
-    "requirements": [
-      "มีประสบการณ์ด้านการออกแบบกราฟิก อย่างน้อย 2 ปี",
-      "สามารถใช้ Adobe Photoshop และ Illustrator ได้อย่างมืออาชีพ",
-      "มีความคิดสร้างสรรค์และสามารถทำงานภายใต้แรงกดดันได้ดี",
-      "มีทักษะการทำงานร่วมกับทีมการตลาดและพัฒนา UI"
-    ],
+    "jobTitle": "Graphic Designer",
+    "companyName": "Creative Minds Studio",
+    "salary": "30,000 - 45,000 THB",
+    "location": "Chiang Mai, Thailand",
+    "description": "The Graphic Designer will be responsible for creating visually appealing graphics, branding elements, and marketing materials. This role requires proficiency in design tools and creativity to craft compelling visuals.",
     "benefits": [
-      "ทำงานแบบ Hybrid",
-      "เงินโบนัสตามผลงาน",
-      "วันหยุดประจำปีเพิ่มเติม",
-      "อบรมและพัฒนาทักษะ"
+      {"desc": "Health insurance"},
+      {"desc": "Retirement plan"},
+      {"desc": "Flexible working hours"}
     ],
-    "data_posted": "2025-03-05"
+    "vacancy": 3,
+    "responsibilities": [
+      {"desc": "Create and design visual concepts"},
+      {"desc": "Develop brand identities for clients"},
+      {"desc": "Collaborate with marketing teams to produce promotional material"}
+    ],
+    "qualifications_and_skills": [
+      {"desc": "Bachelor's degree in Graphic Design or related field"},
+      {"desc": "2+ years of experience in graphic design"},
+      {"desc": "Experience with design tools like Adobe Photoshop, Illustrator, and InDesign"},
+      {"desc": "Strong creative and artistic skills"},
+      {"desc": "Attention to detail and accuracy"},
+      {"desc": "Excellent communication and collaboration skills"}
+    ],
+    "logo": "https://dummyimage.com/1000x250/000/fff&text=GD",
+    "aboutCompany": "Creative Minds Studio is an innovative design firm that thrives on creativity and fresh ideas. We work with clients from various industries to craft visually compelling brand identities and marketing materials."
+  },
+  "3": {
+    "id": 3,
+    "jobTitle": "Marketing Specialist",
+    "companyName": "Growth Strategies Co.",
+    "salary": "40,000 - 60,000 THB",
+    "location": "Bangkok, Thailand",
+    "description": "As a Marketing Specialist, you will be tasked with developing and executing marketing strategies, analyzing market trends, and driving growth initiatives to enhance brand visibility and sales.",
+    "benefits": [
+      {"desc": "Travel allowance"},
+      {"desc": "Health insurance"},
+      {"desc": "Performance incentives"}
+    ],
+    "vacancy": 4,
+    "responsibilities": [
+      {"desc": "Develop and implement marketing strategies"},
+      {"desc": "Analyze market trends and consumer behavior"},
+      {"desc": "Drive growth initiatives to enhance brand visibility and sales"}
+    ],
+    "qualifications_and_skills": [
+      {"desc": "Bachelor's degree in Marketing, Business, or related field"},
+      {"desc": "3+ years of experience in marketing roles"},
+      {"desc": "Strong knowledge of digital marketing tools and analytics"},
+      {"desc": "Strong analytical and problem-solving skills"},
+      {"desc": "Excellent written and verbal communication skills"},
+      {"desc": "Proficiency in marketing platforms (Google Analytics, SEO, SEM)"}
+    ],
+    "logo": "https://dummyimage.com/1000x250/000/fff&text=MS",
+    "aboutCompany": "Growth Strategies Co. is a dynamic marketing consultancy dedicated to driving business success. We provide innovative strategies and data-driven solutions to help businesses reach their full potential."
+  },
+  "4": {
+    "id": 4,
+    "jobTitle": "Photographer",
+    "companyName": "ShutterPro Media",
+    "salary": "25,000 - 40,000 THB",
+    "location": "Phuket, Thailand",
+    "description": "The Photographer will capture high-quality images for various projects, including commercial work, events, and portraits. A strong eye for detail and creativity is essential in this role.",
+    "benefits": [
+      {"desc": "Health insurance"},
+      {"desc": "Paid vacation"},
+      {"desc": "Photo equipment provided"}
+    ],
+    "vacancy": 2,
+    "responsibilities": [
+      {"desc": "Capture high-quality images for commercial and personal projects"},
+      {"desc": "Collaborate with clients to understand their vision"},
+      {"desc": "Edit and retouch photos to meet clients' expectations"}
+    ],
+    "qualifications_and_skills": [
+      {"desc": "Degree in Photography, Visual Arts, or related field"},
+      {"desc": "2+ years of experience in photography"},
+      {"desc": "Proficient in Adobe Photoshop, Lightroom, and other photo-editing software"},
+      {"desc": "Excellent photography skills and eye for detail"},
+      {"desc": "Creative and artistic abilities"},
+      {"desc": "Strong communication and client interaction skills"}
+    ],
+    "logo": "https://dummyimage.com/1000x250/000/fff&text=PH",
+    "aboutCompany": "ShutterPro Media is a creative photography studio that specializes in capturing stunning visuals for both commercial and personal projects. We value creativity, precision, and attention to detail."
   }
 }

@@ -1,30 +1,34 @@
 [
   {
     "id": 1,
-    "title": "Frontend Developer",
-    "sub_title": "สร้างและพัฒนาส่วนติดต่อผู้ใช้ของเว็บไซต์",
-    "desc": "รับผิดชอบในการออกแบบและพัฒนาส่วนหน้า (UI) โดยใช้เทคโนโลยีเช่น HTML, CSS, JavaScript และเฟรมเวิร์ก React หรือ Vue.js เพื่อสร้างประสบการณ์ผู้ใช้ที่ดีเยี่ยม",
-    "data_ago": "3 days ago"
+    "jobTitle": "Web Developer",
+    "logo": "https://dummyimage.com/40x40/000/fff&text=WD",
+    "timeAgo": "2 days ago",
+    "subTitle": "Join our dynamic team to develop cutting-edge web applications",
+    "desc": "As a Web Developer, you will be responsible for developing and maintaining web applications. You will collaborate closely with designers to create an optimal user interface and user experience. Your role will also involve optimizing the performance of the applications, ensuring scalability, and writing clean and efficient code. The ideal candidate should have strong problem-solving skills and the ability to work in a fast-paced environment."
   },
   {
     "id": 2,
-    "title": "Graphic Designer",
-    "sub_title": "ออกแบบกราฟิกสำหรับโปรเจกต์ที่หลากหลาย",
-    "desc": "ทำงานกับทีมการตลาดและทีมพัฒนาผลิตภัณฑ์เพื่อสร้างสรรค์งานกราฟิกที่น่าสนใจ เช่น โลโก้ แบนเนอร์ และสื่อออนไลน์ โดยใช้เครื่องมือ Adobe Photoshop และ Illustrator",
-    "data_ago": "1 week ago"
+    "jobTitle": "Graphic Designer",
+    "logo": "https://dummyimage.com/40x40/000/fff&text=GD",
+    "timeAgo": "1 week ago",
+    "subTitle": "Create stunning designs and brand identities for various clients",
+    "desc": "As a Graphic Designer, you will create visually appealing designs that convey brand identity and marketing messages. You will be responsible for developing graphic concepts, designing logos, branding elements, and marketing materials such as brochures, posters, and digital assets. You will work closely with the marketing and creative teams to ensure that your designs align with the overall vision and strategy of the company and clients."
   },
   {
     "id": 3,
-    "title": "Data Analyst",
-    "sub_title": "วิเคราะห์และแปลผลข้อมูลเพื่อสนับสนุนการตัดสินใจทางธุรกิจ",
-    "desc": "ใช้เครื่องมือเช่น SQL, Python และ Tableau ในการรวบรวม วิเคราะห์ และนำเสนอข้อมูลที่ช่วยให้ทีมตัดสินใจได้อย่างแม่นยำ",
-    "data_ago": "2 weeks ago"
+    "jobTitle": "Marketing Specialist",
+    "logo": "https://dummyimage.com/40x40/000/fff&text=MS",
+    "timeAgo": "3 days ago",
+    "subTitle": "Help drive growth through data-driven marketing strategies",
+    "desc": "As a Marketing Specialist, you will develop and implement marketing strategies designed to promote the company's services and grow the client base. You will be responsible for analyzing market trends, consumer behavior, and competitor activities to craft campaigns that drive sales and brand visibility. You will collaborate with the sales and product teams to ensure all marketing efforts align with business objectives and contribute to the overall success of the company."
   },
   {
     "id": 4,
-    "title": "HR Specialist",
-    "sub_title": "ดูแลกระบวนการสรรหาและพัฒนาทรัพยากรมนุษย์",
-    "desc": "จัดการกระบวนการสรรหาพนักงานใหม่ การปฐมนิเทศ และการพัฒนาทักษะพนักงาน รวมถึงจัดทำรายงานที่เกี่ยวข้อง",
-    "data_ago": "5 days ago"
+    "jobTitle": "Photographer",
+    "logo": "https://dummyimage.com/40x40/000/fff&text=PH",
+    "timeAgo": "5 days ago",
+    "subTitle": "Capture high-quality images for events and commercial projects",
+    "desc": "As a Photographer, you will capture high-quality images for a wide range of projects, including commercial, personal, and event photography. You will collaborate closely with clients to understand their vision and create visuals that meet their expectations. You will also be responsible for editing and retouching photos to ensure the final product is of the highest standard. A keen eye for detail, creativity, and the ability to work under tight deadlines are essential skills for this role."
   }
 ]

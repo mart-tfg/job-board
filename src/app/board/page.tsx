@@ -6,10 +6,11 @@ import CardJob from "./component/cardjob";
 
 interface Job {
   id: number;
-  title: string;
-  sub_title: string;
+  jobTitle: string;
+  subTitle: string;
   desc: string;
-  data_ago: string;
+  timeAgo: string;
+  logo: string;
 }
 
 export default function Board() {
