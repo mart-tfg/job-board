@@ -159,6 +159,8 @@ export default function CardJob({ jobs }: CardJobProps) {
               </Card>
             ))}
           </div>
+          <CardDetail job_detail={job_detail} />
+
         </div>
 
       </div>
