@@ -28,6 +28,9 @@ interface Job {
   id: number;
   jobTitle: string;
   sub_title: string;
+  subTitle: string
+  desc: string
+  timeAgo: string;
   description: string;
   data_ago: string;
   salary: string;
@@ -56,6 +59,7 @@ export default function CardJob({ jobs }: CardJobProps) {
 
   useEffect(() => {
     setIsLoading(true)
+    console.log(jobs);
     setTimeout(() => setIsLoading(false), 1000)
   }, [setIsLoading])
 
@@ -95,7 +99,7 @@ export default function CardJob({ jobs }: CardJobProps) {
                           <CardTitle>
                             <div className="text-[24px]">{job.jobTitle}</div>
                           </CardTitle>
-                          <CardDescription>{job.sub_title}</CardDescription>
+                          <CardDescription>{job.subTitle}</CardDescription>
                         </div>
                         <div>
                           <Image src={job.logo} alt="Logo" width={50} height={50} />
@@ -103,10 +107,10 @@ export default function CardJob({ jobs }: CardJobProps) {
                       </div>
                     </CardHeader>
                     <CardContent>
-                      <p>{job.description}</p>
+                      <p>{job.desc}</p>
                     </CardContent>
                     <CardFooter>
-                      <p>{job.data_ago}</p>
+                      <p>{job.timeAgo}</p>
                     </CardFooter>
                   </Card>
                 ))}

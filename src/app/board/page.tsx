@@ -17,7 +17,10 @@ interface benefits {
 interface Job {
   id: number;
   jobTitle: string;
+  timeAgo:string;
   sub_title: string;
+  desc:string
+  subTitle:string;
   description: string;
   data_ago: string;
   salary: string;
@@ -40,6 +43,7 @@ export default function Board() {
         const response = await fetch("/api/jobs"); // เปลี่ยนเป็น API endpoint ของคุณ
         const data: Job[] = await response.json();
         setJobs(data);
+        console.log(data);
       } catch (error) {
         console.error("Error fetching jobs:", error);
       } finally {
@@ -53,8 +57,9 @@ export default function Board() {
   return (
     <div className="min-h-screen bg-[#043262] text-[#2d3f4b] p-8 flex flex-col gap-8">
       <h1 className="text-[#ffffff] text-2xl font-bold">
-        ตำแหน่งงานแนะนำสำหรับคุณ
+        ตำแหน่งงานแนะนำสำหรับคุณ 
       </h1>
+     
       <CardJob jobs={jobs} />
     </div>
   );

@@ -33,7 +33,7 @@ interface CardDetailProps {
 }
 
 export default function CardDetail({ job_detail }: CardDetailProps) {
-  const {CardContent, CardDescription, CardFooter, CardHeader, CardTitle,Card } = useGlobalComponent();
+  const { CardContent, CardDescription, CardFooter, CardHeader, CardTitle, Card } = useGlobalComponent();
   const { setIsLoading } = useLoading();
 
   useEffect(() => {
@@ -64,7 +64,7 @@ export default function CardDetail({ job_detail }: CardDetailProps) {
             </CardTitle>
             <CardTitle>
               {/* {job_detail.responsibilities} */}
-              {/* {job_detail.responsibilities.length > 0 && (
+              {job_detail.responsibilities.length > 0 && (
                 <div className="mt-4">
                   <h3 className="text-lg font-semibold">Responsibility</h3>
                   <ul className="list-disc pl-5 mt-2">
@@ -75,11 +75,11 @@ export default function CardDetail({ job_detail }: CardDetailProps) {
                     ))}
                   </ul>
                 </div>
-              )} */}
+              )}
             </CardTitle>
             <CardTitle>
               {/* {job_detail.responsibilities} */}
-              {/* {job_detail.qualifications_and_skills.length > 0 && (
+              {job_detail.qualifications_and_skills.length > 0 && (
                 <div className="mt-4">
                   <h3 className="text-lg font-semibold">Qualifications and Skills</h3>
                   <ul className="list-disc pl-5 mt-2">
@@ -90,11 +90,11 @@ export default function CardDetail({ job_detail }: CardDetailProps) {
                     ))}
                   </ul>
                 </div>
-              )} */}
+              )}
             </CardTitle>
             <CardTitle>
               {/* {job_detail.responsibilities} */}
-              {/* {job_detail.benefits.length > 0 && (
+              {job_detail.benefits.length > 0 && (
                 <div className="mt-4">
                   <h3 className="text-lg font-semibold">Benefit</h3>
                   <ul className="list-disc pl-5 mt-2">
@@ -105,7 +105,7 @@ export default function CardDetail({ job_detail }: CardDetailProps) {
                     ))}
                   </ul>
                 </div>
-              )} */}
+              )}
             </CardTitle>
           </CardContent>
           <CardFooter>
@@ -113,7 +113,7 @@ export default function CardDetail({ job_detail }: CardDetailProps) {
           </CardFooter>
         </Card>
       ) : (
-        <div>Select a job to view details</div>
+        <div></div>
       )}
     </div>
   );
