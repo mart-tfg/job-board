@@ -129,9 +129,8 @@ export default function CardJob({ jobs }: CardJobProps) {
 
       {/* Desktop View */}
       <div className="hidden lg:block">
-
         <div className="flex w-full gap-8">
-          <div className="flex  flex-col  gap-8 w-full text-start">
+          <div className="flex  flex-col gap-8 w-full text-start">
             {jobs.map((job) => (
               <Card
                 key={job.id}
@@ -144,7 +143,7 @@ export default function CardJob({ jobs }: CardJobProps) {
                       <CardTitle>
                         <div className="text-[24px]">{job.jobTitle}</div>
                       </CardTitle>
-                      <CardDescription>{job.sub_title}</CardDescription>
+                      <CardDescription>{job.subTitle}</CardDescription>
                     </div>
                     <div>
                       <Image src={job.logo} alt="Logo" width={50} height={50} />
@@ -152,14 +151,14 @@ export default function CardJob({ jobs }: CardJobProps) {
                   </div>
                 </CardHeader>
                 <CardContent>
-                  <p>{job.description}</p>
+                  <p>{job.desc}</p>
                 </CardContent>
                 <CardFooter>
-                  <p>{job.data_ago}</p>
+                  <p>{job.timeAgo}</p>
                 </CardFooter>
               </Card>
             ))}
-          </div><CardDetail job_detail={job_detail} />
+          </div>
         </div>
 
       </div>
