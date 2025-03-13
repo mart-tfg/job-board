@@ -11,6 +11,9 @@ interface responsibilities {
 interface qualifications_and_skills {
   desc: string;
 }
+interface benefits {
+  desc: string;
+}
 interface Job {
   id: number;
   jobTitle: string;
@@ -22,6 +25,7 @@ interface Job {
   companyName: string;
   responsibilities: responsibilities[];
   qualifications_and_skills: qualifications_and_skills[]
+  benefits: benefits[]
 }
 
 interface CardDetailProps {
@@ -29,7 +33,7 @@ interface CardDetailProps {
 }
 
 export default function CardDetail({ job_detail }: CardDetailProps) {
-  const { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } = useGlobalComponent();
+  const {CardContent, CardDescription, CardFooter, CardHeader, CardTitle } = useGlobalComponent();
   const { setIsLoading } = useLoading();
 
   useEffect(() => {
@@ -40,7 +44,7 @@ export default function CardDetail({ job_detail }: CardDetailProps) {
   return (
     <div className="w-[100%] md:block hidden">
       {job_detail ? (
-        <Card className="min-h-[90vh]">
+        <div className="min-h-[90vh]">
           <CardHeader>
             <Image src={job_detail.logo} alt="Logo" width={1000} height={100} />
             <CardTitle>
@@ -88,6 +92,21 @@ export default function CardDetail({ job_detail }: CardDetailProps) {
                 </div>
               )}
             </CardTitle>
+            <CardTitle>
+              {/* {job_detail.responsibilities} */}
+              {job_detail.benefits.length > 0 && (
+                <div className="mt-4">
+                  <h3 className="text-lg font-semibold">Benefit</h3>
+                  <ul className="list-disc pl-5 mt-2">
+                    {job_detail.benefits.map((data, index) => (
+                      <li key={index}>
+                        <p className="font-normal">{data.desc}</p>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </CardTitle>
             {/* แสดง benefits */}
             {/* {job_detail.benefits.length > 0 && (
               <div className="mt-4">
@@ -105,7 +124,7 @@ export default function CardDetail({ job_detail }: CardDetailProps) {
           <CardFooter>
             <p>{job_detail.data_ago}</p>
           </CardFooter>
-        </Card>
+        </div>
       ) : (
         <div>Select a job to view details</div>
       )}
