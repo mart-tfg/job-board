@@ -14,13 +14,28 @@ import {
   SheetTrigger
 } from '@/components/ui/sheet'
 
+interface responsibilities {
+  desc: string;
+}
+
+interface qualifications_and_skills {
+  desc: string;
+}
+interface benefits {
+  desc: string;
+}
 interface Job {
-  id: number
-  jobTitle: string
-  subTitle: string
-  desc: string
-  timeAgo: string
-  logo: string
+  id: number;
+  jobTitle: string;
+  sub_title: string;
+  description: string;
+  data_ago: string;
+  salary: string;
+  logo: string;
+  companyName: string;
+  responsibilities: responsibilities[];
+  qualifications_and_skills: qualifications_and_skills[]
+  benefits: benefits[]
 }
 
 interface CardJobProps {
@@ -80,7 +95,7 @@ export default function CardJob({ jobs }: CardJobProps) {
                           <CardTitle>
                             <div className="text-[24px]">{job.jobTitle}</div>
                           </CardTitle>
-                          <CardDescription>{job.subTitle}</CardDescription>
+                          <CardDescription>{job.sub_title}</CardDescription>
                         </div>
                         <div>
                           <Image src={job.logo} alt="Logo" width={50} height={50} />
@@ -88,10 +103,10 @@ export default function CardJob({ jobs }: CardJobProps) {
                       </div>
                     </CardHeader>
                     <CardContent>
-                      <p>{job.desc}</p>
+                      <p>{job.description}</p>
                     </CardContent>
                     <CardFooter>
-                      <p>{job.timeAgo}</p>
+                      <p>{job.data_ago}</p>
                     </CardFooter>
                   </Card>
                 ))}
@@ -125,7 +140,7 @@ export default function CardJob({ jobs }: CardJobProps) {
                       <CardTitle>
                         <div className="text-[24px]">{job.jobTitle}</div>
                       </CardTitle>
-                      <CardDescription>{job.subTitle}</CardDescription>
+                      <CardDescription>{job.sub_title}</CardDescription>
                     </div>
                     <div>
                       <Image src={job.logo} alt="Logo" width={50} height={50} />
@@ -133,10 +148,10 @@ export default function CardJob({ jobs }: CardJobProps) {
                   </div>
                 </CardHeader>
                 <CardContent>
-                  <p>{job.desc}</p>
+                  <p>{job.description}</p>
                 </CardContent>
                 <CardFooter>
-                  <p>{job.timeAgo}</p>
+                  <p>{job.data_ago}</p>
                 </CardFooter>
               </Card>
             ))}

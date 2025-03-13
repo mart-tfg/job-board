@@ -4,13 +4,28 @@ import { useLoading } from "@/context/LoadingContext";
 import { useEffect, useState } from "react";
 import CardJob from "./component/cardjob";
 
+interface responsibilities {
+  desc: string;
+}
+
+interface qualifications_and_skills {
+  desc: string;
+}
+interface benefits {
+  desc: string;
+}
 interface Job {
   id: number;
   jobTitle: string;
-  subTitle: string;
-  desc: string;
-  timeAgo: string;
+  sub_title: string;
+  description: string;
+  data_ago: string;
+  salary: string;
   logo: string;
+  companyName: string;
+  responsibilities: responsibilities[];
+  qualifications_and_skills: qualifications_and_skills[]
+  benefits: benefits[]
 }
 
 export default function Board() {

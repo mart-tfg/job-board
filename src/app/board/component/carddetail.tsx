@@ -56,7 +56,7 @@ export default function CardDetail({ job_detail }: CardDetailProps) {
             <p>{job_detail.description}</p>
             <CardTitle>
               <h3 className="text-lg font-semibold mt-4">Location</h3>
-              <CardDescription>{job_detail.companyName}</CardDescription>
+              {/* <CardDescription>{job_detail.companyName}</CardDescription> */}
             </CardTitle>
             <CardTitle>
               <h3 className="text-lg font-semibold mt-4">Salary</h3>
@@ -64,7 +64,7 @@ export default function CardDetail({ job_detail }: CardDetailProps) {
             </CardTitle>
             <CardTitle>
               {/* {job_detail.responsibilities} */}
-              {job_detail.responsibilities.length > 0 && (
+              {/* {job_detail.responsibilities.length > 0 && (
                 <div className="mt-4">
                   <h3 className="text-lg font-semibold">Responsibility</h3>
                   <ul className="list-disc pl-5 mt-2">
@@ -75,11 +75,11 @@ export default function CardDetail({ job_detail }: CardDetailProps) {
                     ))}
                   </ul>
                 </div>
-              )}
+              )} */}
             </CardTitle>
             <CardTitle>
               {/* {job_detail.responsibilities} */}
-              {job_detail.qualifications_and_skills.length > 0 && (
+              {/* {job_detail.qualifications_and_skills.length > 0 && (
                 <div className="mt-4">
                   <h3 className="text-lg font-semibold">Qualifications and Skills</h3>
                   <ul className="list-disc pl-5 mt-2">
@@ -90,11 +90,11 @@ export default function CardDetail({ job_detail }: CardDetailProps) {
                     ))}
                   </ul>
                 </div>
-              )}
+              )} */}
             </CardTitle>
             <CardTitle>
               {/* {job_detail.responsibilities} */}
-              {job_detail.benefits.length > 0 && (
+              {/* {job_detail.benefits.length > 0 && (
                 <div className="mt-4">
                   <h3 className="text-lg font-semibold">Benefit</h3>
                   <ul className="list-disc pl-5 mt-2">
@@ -105,7 +105,7 @@ export default function CardDetail({ job_detail }: CardDetailProps) {
                     ))}
                   </ul>
                 </div>
-              )}
+              )} */}
             </CardTitle>
           </CardContent>
           <CardFooter>
