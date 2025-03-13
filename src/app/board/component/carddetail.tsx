@@ -3,11 +3,20 @@ import { useLoading } from "@/context/LoadingContext";
 import { useEffect } from "react";
 import { useGlobalComponent } from "@/providers/GlobalComponents";
 
-export default function CardDetail() {
+interface Job {
+  id: number;
+  title: string;
+  sub_title: string;
+  desc: string;
+  data_ago: string;
+}
+
+interface CardDetailProps {
+  job: Job | null; // Job detail passed as prop, or null if not selected
+}
+
+export default function CardDetail({ job }: CardDetailProps) {
   const {
-    // Button,
-    // Input,
-    // Label,
     Card,
     CardContent,
     CardDescription,
@@ -21,34 +30,33 @@ export default function CardDetail() {
   useEffect(() => {
     setIsLoading(true);
     setTimeout(() => {
-      setIsLoading(false);
+      setIsLoading(false); // Simulating loading for 1 second
     }, 1000);
   }, [setIsLoading]);
 
+  // if (!job) {
+  //   return <div className="w-[100%] md:block hidden">Select a job to view details</div>;
+  // }
+
   return (
-    <div className=" w-[100%] md:block hidden">
-      <Card className=" h-[90vh]">
+    <div className="w-[100%] md:block hidden">
+    {job ? (
+      <Card className="h-[90vh]">
         <CardHeader>
-          <CardTitle>
-            Software Developer (Web/Mobile/Back-End/Full Stack)
-          </CardTitle>
-          <CardDescription>
-            Playtorium Solutions Company Limited
-          </CardDescription>
+          <CardTitle>{job.title}</CardTitle>
+          <CardDescription>{job.sub_title}</CardDescription>
         </CardHeader>
         <CardContent>
-          <p>
-            บริษัท เพลย์ทอเรียม โซลูชันส์ จำกัด เป็นผู้ให้บริการด้าน Digital
-            Platform และเป็น Digital Transformation Partner ที่มีความชำนาญด้าน
-            Software Development, Software Testing และ Data Integration and
-            Analytics พร้อมด้วยทีมงานที่มีศักยภาพและประสบการณ์ อย่างทีม
-            Data/BI/AI Engineers สำหรับการตัดสินใจเชิงธุรกิจ
-          </p>
+          <p>{job.desc}</p>
         </CardContent>
         <CardFooter>
-          <p>8 วันที่ผ่านมา</p>
+          <p>{job.data_ago}</p>
         </CardFooter>
       </Card>
-    </div>
+    ) : (
+      <div></div> 
+    )}
+  </div>
+  
   );
 }

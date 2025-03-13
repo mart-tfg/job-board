@@ -1,13 +1,25 @@
 "use client";
-import { useLoading } from "@/context/LoadingContext";
-import { useEffect } from "react";
-import { useGlobalComponent } from "@/providers/GlobalComponents";
 
-export default function CardJob() {
+import { useLoading } from "@/context/LoadingContext";
+import { useEffect, useState } from "react";
+import { useGlobalComponent } from "@/providers/GlobalComponents";
+import CardDetail from "./../component/carddetail";
+
+interface Job {
+  id: number;
+  title: string;
+  sub_title: string;
+  desc: string;
+  data_ago: string;
+}
+
+interface CardJobProps {
+  jobs: Job[];
+}
+
+export default function CardJob({ jobs }: CardJobProps) {
+  const [job_detail, setJobs_Detail] = useState<Job | null>(null); // เปลี่ยนเป็น Job | null
   const {
-    // Button,
-    // Input,
-    // Label,
     Card,
     CardContent,
     CardDescription,
@@ -25,52 +37,43 @@ export default function CardJob() {
     }, 1000);
   }, [setIsLoading]);
 
+  const fetchJobDetail = async (id: string) => {
+    setIsLoading(true); // ตั้งค่า loading ก่อน fetch
+    try {
+      const response = await fetch(`/api/job/${id}`);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const data: Job = await response.json(); // เปลี่ยนเป็น Job เดียว
+      setJobs_Detail(data);
+      console.log(data);
+    } catch (error) {
+      console.error("Error fetching job detail:", error);
+      // แสดงข้อความ error ให้ผู้ใช้ทราบ
+    } finally {
+      setIsLoading(false); // ตั้งค่า loading หลัง fetch เสร็จ
+    }
+  };
+
   return (
-    <div className=" flex flex-col gap-8 w-[100%]">
-      <Card>
-        <CardHeader>
-          <CardTitle>
-            Software Developer (Web/Mobile/Back-End/Full Stack)
-          </CardTitle>
-          <CardDescription>
-            Playtorium Solutions Company Limited
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <p>
-            บริษัท เพลย์ทอเรียม โซลูชันส์ จำกัด เป็นผู้ให้บริการด้าน Digital
-            Platform และเป็น Digital Transformation Partner ที่มีความชำนาญด้าน
-            Software Development, Software Testing และ Data Integration and
-            Analytics พร้อมด้วยทีมงานที่มีศักยภาพและประสบการณ์ อย่างทีม
-            Data/BI/AI Engineers สำหรับการตัดสินใจเชิงธุรกิจ
-          </p>
-        </CardContent>
-        <CardFooter>
-          <p>8 วันที่ผ่านมา</p>
-        </CardFooter>
-      </Card>
-      <Card>
-        <CardHeader>
-          <CardTitle>
-            Software Developer (Web/Mobile/Back-End/Full Stack)
-          </CardTitle>
-          <CardDescription>
-            Playtorium Solutions Company Limited
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <p>
-            บริษัท เพลย์ทอเรียม โซลูชันส์ จำกัด เป็นผู้ให้บริการด้าน Digital
-            Platform และเป็น Digital Transformation Partner ที่มีความชำนาญด้าน
-            Software Development, Software Testing และ Data Integration and
-            Analytics พร้อมด้วยทีมงานที่มีศักยภาพและประสบการณ์ อย่างทีม
-            Data/BI/AI Engineers สำหรับการตัดสินใจเชิงธุรกิจ
-          </p>
-        </CardContent>
-        <CardFooter>
-          <p>8 วันที่ผ่านมา</p>
-        </CardFooter>
-      </Card>
+    <div className="flex w-full gap-8">
+      <div className="flex flex-col gap-8 w-full">
+        {jobs.map((job) => (
+          <Card key={job.id} className="cursor-pointer" onClick={() => fetchJobDetail(job.id.toString())}>
+            <CardHeader>
+              <CardTitle>{job.title}</CardTitle>
+              <CardDescription>{job.sub_title}</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <p>{job.desc}</p>
+            </CardContent>
+            <CardFooter>
+              <p>{job.data_ago}</p>
+            </CardFooter>
+          </Card>
+        ))}
+      </div>
+      <CardDetail job={job_detail} />
     </div>
   );
 }

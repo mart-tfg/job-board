@@ -1,0 +1,44 @@
+{
+  "1": {
+    "id": 1,
+    "title": "Frontend Developer",
+    "company": "Tech Innovators Co., Ltd.",
+    "location": "กรุงเทพมหานคร, ไทย",
+    "salary": "50,000 - 80,000 THB",
+    "desc": "รับผิดชอบในการออกแบบและพัฒนาส่วนหน้า (UI) ของเว็บไซต์และเว็บแอปพลิเคชัน โดยใช้ HTML, CSS, JavaScript และ React.js หรือ Vue.js",
+    "requirements": [
+      "มีประสบการณ์ในการพัฒนาเว็บด้วย HTML, CSS, และ JavaScript",
+      "สามารถใช้ React.js หรือ Vue.js ได้อย่างชำนาญ",
+      "มีความเข้าใจเกี่ยวกับ RESTful APIs และ Web Services",
+      "สามารถทำงานเป็นทีม และมีทักษะการสื่อสารที่ดี"
+    ],
+    "benefits": [
+      "โบนัสประจำปี",
+      "ประกันสุขภาพ",
+      "Flexible working hours",
+      "Work from home option"
+    ],
+    "data_posted": "2025-03-10"
+  },
+  "2": {
+    "id": 2,
+    "title": "Graphic Designer",
+    "company": "Creative Studio Ltd.",
+    "location": "เชียงใหม่, ไทย",
+    "salary": "35,000 - 60,000 THB",
+    "desc": "ออกแบบสื่อกราฟิกสำหรับโฆษณาและโซเชียลมีเดีย รวมถึงแบรนด์ดิ้งและ UI design",
+    "requirements": [
+      "มีประสบการณ์ด้านการออกแบบกราฟิก อย่างน้อย 2 ปี",
+      "สามารถใช้ Adobe Photoshop และ Illustrator ได้อย่างมืออาชีพ",
+      "มีความคิดสร้างสรรค์และสามารถทำงานภายใต้แรงกดดันได้ดี",
+      "มีทักษะการทำงานร่วมกับทีมการตลาดและพัฒนา UI"
+    ],
+    "benefits": [
+      "ทำงานแบบ Hybrid",
+      "เงินโบนัสตามผลงาน",
+      "วันหยุดประจำปีเพิ่มเติม",
+      "อบรมและพัฒนาทักษะ"
+    ],
+    "data_posted": "2025-03-05"
+  }
+}

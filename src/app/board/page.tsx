@@ -1,31 +1,45 @@
 "use client";
-// import { useAuth } from "@/context/AuthContext";
+
 import { useLoading } from "@/context/LoadingContext";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import CardJob from "./component/cardjob";
-import CardDetail from "./component/carddetail";
+
+interface Job {
+  id: number;
+  title: string;
+  sub_title: string;
+  desc: string;
+  data_ago: string;
+}
 
 export default function Board() {
-  // const { token, logout } = useAuth();
   const { setIsLoading } = useLoading();
+  const [jobs, setJobs] = useState<Job[]>([]);
 
   useEffect(() => {
     setIsLoading(true);
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 1000);
+
+    const fetchJobs = async () => {
+      try {
+        const response = await fetch("/api/jobs"); // เปลี่ยนเป็น API endpoint ของคุณ
+        const data: Job[] = await response.json();
+        setJobs(data);
+      } catch (error) {
+        console.error("Error fetching jobs:", error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchJobs();
   }, [setIsLoading]);
 
   return (
-    <div className="min-h-[100vh] bg-[#c0eed5] not-first:text-[#2d3f4b] p-8 flex flex-col gap-8">
-      <div className="text-[#043262] text-[28px] font-bold">
+    <div className="min-h-screen bg-[#043262] text-[#2d3f4b] p-8 flex flex-col gap-8">
+      <h1 className="text-[#ffffff] text-2xl font-bold">
         ตำแหน่งงานแนะนำสำหรับคุณ
-      </div>
-      <div className="flex w-full gap-8">
-        {/* <div></div> */}
-        <CardJob />
-        <CardDetail />
-      </div>
+      </h1>
+      <CardJob jobs={jobs} />
     </div>
   );
 }
