@@ -23,9 +23,10 @@ interface Job {
   salary: string;
   logo: string;
   companyName: string;
+  location: string;
   responsibilities: responsibilities[];
-  qualifications_and_skills: qualifications_and_skills[]
-  benefits: benefits[]
+  qualifications_and_skills: qualifications_and_skills[];
+  benefits: benefits[];
 }
 
 interface CardDetailProps {
@@ -33,7 +34,14 @@ interface CardDetailProps {
 }
 
 export default function CardDetail({ job_detail }: CardDetailProps) {
-  const { CardContent, CardDescription, CardFooter, CardHeader, CardTitle, Card } = useGlobalComponent();
+  const {
+    CardContent,
+    CardDescription,
+    CardFooter,
+    CardHeader,
+    CardTitle,
+    Card,
+  } = useGlobalComponent();
   const { setIsLoading } = useLoading();
 
   useEffect(() => {
@@ -44,7 +52,7 @@ export default function CardDetail({ job_detail }: CardDetailProps) {
   return (
     <div className="w-[100%]">
       {job_detail ? (
-        <Card className="min-h-[90vh]">
+        <Card className="min-h-[100vh]">
           <CardHeader>
             <Image src={job_detail.logo} alt="Logo" width={1000} height={100} />
             <CardTitle>
@@ -56,11 +64,15 @@ export default function CardDetail({ job_detail }: CardDetailProps) {
             <p>{job_detail.description}</p>
             <CardTitle>
               <h3 className="text-lg font-semibold mt-4">Location</h3>
-              {/* <CardDescription>{job_detail.companyName}</CardDescription> */}
+              <CardDescription className="font-normal">
+                {job_detail.location}
+              </CardDescription>
             </CardTitle>
             <CardTitle>
               <h3 className="text-lg font-semibold mt-4">Salary</h3>
-              <CardDescription>{job_detail.salary}</CardDescription>
+              <CardDescription className="font-normal">
+                {job_detail.salary}
+              </CardDescription>
             </CardTitle>
             <CardTitle>
               {/* {job_detail.responsibilities} */}
@@ -70,7 +82,9 @@ export default function CardDetail({ job_detail }: CardDetailProps) {
                   <ul className="list-disc pl-5 mt-2">
                     {job_detail.responsibilities.map((data, index) => (
                       <li key={index}>
-                        <p className="font-normal">{data.desc}</p>
+                        <p className="font-normal">
+                          <CardDescription> {data.desc}</CardDescription>
+                        </p>
                       </li>
                     ))}
                   </ul>
@@ -81,11 +95,16 @@ export default function CardDetail({ job_detail }: CardDetailProps) {
               {/* {job_detail.responsibilities} */}
               {job_detail.qualifications_and_skills.length > 0 && (
                 <div className="mt-4">
-                  <h3 className="text-lg font-semibold">Qualifications and Skills</h3>
+                  <h3 className="text-lg font-semibold">
+                    Qualifications and Skills
+                  </h3>
                   <ul className="list-disc pl-5 mt-2">
                     {job_detail.qualifications_and_skills.map((data, index) => (
                       <li key={index}>
-                        <p className="font-normal">{data.desc}</p>
+                        <p className="font-normal">
+                          {" "}
+                          <CardDescription>{data.desc}</CardDescription>
+                        </p>
                       </li>
                     ))}
                   </ul>
@@ -100,7 +119,9 @@ export default function CardDetail({ job_detail }: CardDetailProps) {
                   <ul className="list-disc pl-5 mt-2">
                     {job_detail.benefits.map((data, index) => (
                       <li key={index}>
-                        <p className="font-normal">{data.desc}</p>
+                        <p className="font-normal">
+                          <CardDescription>{data.desc}</CardDescription>
+                        </p>
                       </li>
                     ))}
                   </ul>

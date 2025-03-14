@@ -14,6 +14,8 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 
 const GlobalComponentContext = createContext({
   Button,
@@ -25,6 +27,10 @@ const GlobalComponentContext = createContext({
   CardFooter,
   CardHeader,
   CardTitle,
+  ScrollArea,
+  Avatar,
+  AvatarImage,
+  AvatarFallback,
 });
 
 export function GlobalComponentProvider({
@@ -44,6 +50,10 @@ export function GlobalComponentProvider({
         CardFooter,
         CardHeader,
         CardTitle,
+        ScrollArea,
+        Avatar,
+        AvatarImage,
+        AvatarFallback,
       }}
     >
       {children}

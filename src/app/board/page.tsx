@@ -17,18 +17,19 @@ interface benefits {
 interface Job {
   id: number;
   jobTitle: string;
-  timeAgo:string;
+  timeAgo: string;
   sub_title: string;
-  desc:string
-  subTitle:string;
+  desc: string;
+  subTitle: string;
   description: string;
   data_ago: string;
+  location: string;
   salary: string;
   logo: string;
   companyName: string;
   responsibilities: responsibilities[];
-  qualifications_and_skills: qualifications_and_skills[]
-  benefits: benefits[]
+  qualifications_and_skills: qualifications_and_skills[];
+  benefits: benefits[];
 }
 
 export default function Board() {
@@ -57,9 +58,9 @@ export default function Board() {
   return (
     <div className="min-h-screen bg-[#043262] text-[#2d3f4b] p-8 flex flex-col gap-8">
       <h1 className="text-[#ffffff] text-2xl font-bold">
-        ตำแหน่งงานแนะนำสำหรับคุณ 
+        ตำแหน่งงานแนะนำสำหรับคุณ
       </h1>
-     
+
       <CardJob jobs={jobs} />
     </div>
   );

@@ -1,10 +1,9 @@
-import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import logoJob from "@/assets/img/logo.png";
 import Link from "next/link";
-import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { useAuth } from "@/context/AuthContext";
 import { Menu } from "lucide-react"; // Use Menu icon as a hamburger menu
+import { useGlobalComponent } from "@/providers/GlobalComponents";
 
 import {
   Navbar as NavbarComponent,
@@ -22,6 +21,7 @@ import {
 
 export default function Navbar() {
   const { token, logout } = useAuth();
+  const { Button, Avatar, AvatarImage, AvatarFallback } = useGlobalComponent();
 
   return (
     <header className="sticky top-0 z-50 -mb-4 px-4 pb-4">

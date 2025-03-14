@@ -1,18 +1,17 @@
-'use client'
+"use client";
 
-import { useLoading } from '@/context/LoadingContext'
-import { useEffect, useState } from 'react'
-import { useGlobalComponent } from '@/providers/GlobalComponents'
-import CardDetail from './../component/carddetail'
-import Image from 'next/image'
-import { ScrollArea } from '@/components/ui/scroll-area'
+import { useLoading } from "@/context/LoadingContext";
+import { useEffect, useState } from "react";
+import { useGlobalComponent } from "@/providers/GlobalComponents";
+import CardDetail from "./../component/carddetail";
+import Image from "next/image";
 
 import {
   Sheet,
   SheetContent,
   SheetHeader,
-  SheetTrigger
-} from '@/components/ui/sheet'
+  SheetTrigger,
+} from "@/components/ui/sheet";
 
 interface responsibilities {
   desc: string;
@@ -28,56 +27,57 @@ interface Job {
   id: number;
   jobTitle: string;
   sub_title: string;
-  subTitle: string
-  desc: string
+  subTitle: string;
+  desc: string;
   timeAgo: string;
   description: string;
   data_ago: string;
   salary: string;
+  location:string
   logo: string;
   companyName: string;
   responsibilities: responsibilities[];
-  qualifications_and_skills: qualifications_and_skills[]
-  benefits: benefits[]
+  qualifications_and_skills: qualifications_and_skills[];
+  benefits: benefits[];
 }
 
 interface CardJobProps {
-  jobs: Job[]
+  jobs: Job[];
 }
 
 export default function CardJob({ jobs }: CardJobProps) {
-  const [job_detail, setJobs_Detail] = useState<Job | null | undefined>(null)
+  const [job_detail, setJobs_Detail] = useState<Job | null | undefined>(null);
   const {
     Card,
     CardContent,
     CardDescription,
     CardFooter,
     CardHeader,
-    CardTitle
-  } = useGlobalComponent()
-  const { setIsLoading } = useLoading()
+    CardTitle,
+    ScrollArea
+  } = useGlobalComponent();
+  const { setIsLoading } = useLoading();
 
   useEffect(() => {
-    setIsLoading(true)
-    console.log(jobs);
-    setTimeout(() => setIsLoading(false), 1000)
-  }, [setIsLoading])
+    setIsLoading(true);
+    setTimeout(() => setIsLoading(false), 1000);
+  }, [setIsLoading]);
 
   const fetchJobDetail = async (id: string) => {
-    setIsLoading(true)
+    setIsLoading(true);
     try {
-      const response = await fetch(`/api/job/${id}`)
+      const response = await fetch(`/api/job/${id}`);
       if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`)
+        throw new Error(`HTTP error! status: ${response.status}`);
       }
-      const data: Job = await response.json()
-      setJobs_Detail(data)
+      const data: Job = await response.json();
+      setJobs_Detail(data);
     } catch (error) {
-      console.error('Error fetching job detail:', error)
+      console.error("Error fetching job detail:", error);
     } finally {
-      setIsLoading(false)
+      setIsLoading(false);
     }
-  }
+  };
 
   return (
     <div>
@@ -102,7 +102,12 @@ export default function CardJob({ jobs }: CardJobProps) {
                           <CardDescription>{job.subTitle}</CardDescription>
                         </div>
                         <div>
-                          <Image src={job.logo} alt="Logo" width={50} height={50} />
+                          <Image
+                            src={job.logo}
+                            alt="Logo"
+                            width={50}
+                            height={50}
+                          />
                         </div>
                       </div>
                     </CardHeader>
@@ -110,7 +115,7 @@ export default function CardJob({ jobs }: CardJobProps) {
                       <p>{job.desc}</p>
                     </CardContent>
                     <CardFooter>
-                      <p>{job.timeAgo}</p>
+                      <CardDescription>{job.timeAgo}</CardDescription>
                     </CardFooter>
                   </Card>
                 ))}
@@ -130,41 +135,47 @@ export default function CardJob({ jobs }: CardJobProps) {
       {/* Desktop View */}
       <div className="hidden lg:block">
         <div className="flex w-full gap-8">
-          <div className="flex  flex-col gap-8 w-full text-start">
-            {jobs.map((job) => (
-              <Card
-                key={job.id}
-                className="cursor-pointer"
-                onClick={() => fetchJobDetail(job.id.toString())}
-              >
-                <CardHeader>
-                  <div className="flex justify-between">
-                    <div>
-                      <CardTitle>
-                        <div className="text-[24px]">{job.jobTitle}</div>
-                      </CardTitle>
-                      <CardDescription>{job.subTitle}</CardDescription>
+          <ScrollArea className="h-[100vh]  w-full rounded-md pr-4  ">
+            <div className="flex  flex-col gap-8  text-start">
+              {jobs.map((job) => (
+                <Card
+                  key={job.id}
+                  className="cursor-pointer"
+                  onClick={() => fetchJobDetail(job.id.toString())}
+                >
+                  <CardHeader>
+                    <div className="flex justify-between">
+                      <div>
+                        <CardTitle>
+                          <div className="text-[24px]">{job.jobTitle}</div>
+                        </CardTitle>
+                        <CardDescription>{job.subTitle}</CardDescription>
+                      </div>
+                      <div>
+                        <Image
+                          src={job.logo}
+                          alt="Logo"
+                          width={50}
+                          height={50}
+                        />
+                      </div>
                     </div>
-                    <div>
-                      <Image src={job.logo} alt="Logo" width={50} height={50} />
-                    </div>
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <p>{job.desc}</p>
-                </CardContent>
-                <CardFooter>
-                  <p>{job.timeAgo}</p>
-                </CardFooter>
-              </Card>
-            ))}
-          </div>
-          <CardDetail job_detail={job_detail} />
-
+                  </CardHeader>
+                  <CardContent>
+                    <p>{job.desc}</p>
+                  </CardContent>
+                  <CardFooter>
+                    <CardDescription>{job.timeAgo}</CardDescription>
+                  </CardFooter>
+                </Card>
+              ))}
+            </div>
+          </ScrollArea>
+          <ScrollArea className="h-[100vh]  w-full rounded-md pr-4  ">
+            <CardDetail job_detail={job_detail} />
+          </ScrollArea>
         </div>
-
       </div>
     </div>
-
-  )
+  );
 }
