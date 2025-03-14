@@ -1,34 +1,9 @@
 "use client";
 import { useLoading } from "@/context/LoadingContext";
 import { useEffect } from "react";
+import { Job } from "../../../types/jobTypes"; // ใช้ types ที่เราเตรียมไว้
 import { useGlobalComponent } from "@/providers/GlobalComponents";
 import Image from "next/image";
-
-interface responsibilities {
-  desc: string;
-}
-
-interface qualifications_and_skills {
-  desc: string;
-}
-interface benefits {
-  desc: string;
-}
-interface Job {
-  id: number;
-  jobTitle: string;
-  sub_title: string;
-  description: string;
-  data_ago: string;
-  salary: string;
-  logo: string;
-  companyName: string;
-  location: string;
-  responsibilities: responsibilities[];
-  qualifications_and_skills: qualifications_and_skills[];
-  benefits: benefits[];
-}
-
 interface CardDetailProps {
   job_detail: Job | null | undefined;
 }
@@ -64,27 +39,24 @@ export default function CardDetail({ job_detail }: CardDetailProps) {
             <p>{job_detail.description}</p>
             <CardTitle>
               <h3 className="text-lg font-semibold mt-4">Location</h3>
-              <CardDescription className="font-normal">
-                {job_detail.location}
-              </CardDescription>
+              <CardDescription>{job_detail.location}</CardDescription>
             </CardTitle>
             <CardTitle>
               <h3 className="text-lg font-semibold mt-4">Salary</h3>
-              <CardDescription className="font-normal">
-                {job_detail.salary}
-              </CardDescription>
+              <CardDescription>{job_detail.salary}</CardDescription>
             </CardTitle>
             <CardTitle>
               {/* {job_detail.responsibilities} */}
               {job_detail.responsibilities.length > 0 && (
                 <div className="mt-4">
-                  <h3 className="text-lg font-semibold">Responsibility</h3>
+                  <h3 className="text-lg ">Responsibility</h3>
                   <ul className="list-disc pl-5 mt-2">
                     {job_detail.responsibilities.map((data, index) => (
                       <li key={index}>
-                        <p className="font-normal">
-                          <CardDescription> {data.desc}</CardDescription>
-                        </p>
+                        <CardDescription>
+                          <div className="font-normal"></div>
+                          {data.desc}
+                        </CardDescription>
                       </li>
                     ))}
                   </ul>
@@ -101,10 +73,10 @@ export default function CardDetail({ job_detail }: CardDetailProps) {
                   <ul className="list-disc pl-5 mt-2">
                     {job_detail.qualifications_and_skills.map((data, index) => (
                       <li key={index}>
-                        <p className="font-normal">
-                          {" "}
-                          <CardDescription>{data.desc}</CardDescription>
-                        </p>
+                        <CardDescription>
+                          <div className="font-normal"></div>
+                          {data.desc}
+                        </CardDescription>
                       </li>
                     ))}
                   </ul>
@@ -119,9 +91,10 @@ export default function CardDetail({ job_detail }: CardDetailProps) {
                   <ul className="list-disc pl-5 mt-2">
                     {job_detail.benefits.map((data, index) => (
                       <li key={index}>
-                        <p className="font-normal">
-                          <CardDescription>{data.desc}</CardDescription>
-                        </p>
+                        <CardDescription>
+                          <div className="font-normal"></div>
+                          {data.desc}
+                        </CardDescription>
                       </li>
                     ))}
                   </ul>

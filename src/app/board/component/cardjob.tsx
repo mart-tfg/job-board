@@ -1,10 +1,11 @@
 "use client";
 
-import { useLoading } from "@/context/LoadingContext";
 import { useEffect, useState } from "react";
+import { useLoading } from "@/context/LoadingContext";
 import { useGlobalComponent } from "@/providers/GlobalComponents";
 import CardDetail from "./../component/carddetail";
 import Image from "next/image";
+import { Job } from "../../../types/jobTypes"; // ใช้ types ที่เราเตรียมไว้
 
 import {
   Sheet,
@@ -12,34 +13,6 @@ import {
   SheetHeader,
   SheetTrigger,
 } from "@/components/ui/sheet";
-
-interface responsibilities {
-  desc: string;
-}
-
-interface qualifications_and_skills {
-  desc: string;
-}
-interface benefits {
-  desc: string;
-}
-interface Job {
-  id: number;
-  jobTitle: string;
-  sub_title: string;
-  subTitle: string;
-  desc: string;
-  timeAgo: string;
-  description: string;
-  data_ago: string;
-  salary: string;
-  location:string
-  logo: string;
-  companyName: string;
-  responsibilities: responsibilities[];
-  qualifications_and_skills: qualifications_and_skills[];
-  benefits: benefits[];
-}
 
 interface CardJobProps {
   jobs: Job[];
@@ -54,7 +27,7 @@ export default function CardJob({ jobs }: CardJobProps) {
     CardFooter,
     CardHeader,
     CardTitle,
-    ScrollArea
+    ScrollArea,
   } = useGlobalComponent();
   const { setIsLoading } = useLoading();
 
@@ -86,7 +59,7 @@ export default function CardJob({ jobs }: CardJobProps) {
         <Sheet>
           <SheetTrigger>
             <div className="flex w-full gap-8">
-              <div className="flex  flex-col gap-8 w-full text-start">
+              <div className="flex flex-col gap-8 w-full text-start">
                 {jobs.map((job) => (
                   <Card
                     key={job.id}
@@ -124,7 +97,7 @@ export default function CardJob({ jobs }: CardJobProps) {
           </SheetTrigger>
           <SheetContent className="rounded-l-2xl">
             <SheetHeader>
-              <ScrollArea className="h-[87vh] w-[100%] rounded-md mt-8">
+              <ScrollArea className="h-[87vh] w-full rounded-md mt-8">
                 <CardDetail job_detail={job_detail} />
               </ScrollArea>
             </SheetHeader>
@@ -135,8 +108,8 @@ export default function CardJob({ jobs }: CardJobProps) {
       {/* Desktop View */}
       <div className="hidden lg:block">
         <div className="flex w-full gap-8">
-          <ScrollArea className="h-[100vh]  w-full rounded-md pr-4  ">
-            <div className="flex  flex-col gap-8  text-start">
+          <ScrollArea className="h-[100vh] w-full rounded-md pr-4">
+            <div className="flex flex-col gap-8 text-start">
               {jobs.map((job) => (
                 <Card
                   key={job.id}
@@ -171,7 +144,7 @@ export default function CardJob({ jobs }: CardJobProps) {
               ))}
             </div>
           </ScrollArea>
-          <ScrollArea className="h-[100vh]  w-full rounded-md pr-4  ">
+          <ScrollArea className="h-[100vh] w-full rounded-md pr-4">
             <CardDetail job_detail={job_detail} />
           </ScrollArea>
         </div>
