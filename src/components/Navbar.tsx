@@ -1,8 +1,8 @@
+import { useState } from "react";
 import Image from "next/image";
-import logoJob from "@/assets/img/logo.png";
 import Link from "next/link";
 import { useAuth } from "@/context/AuthContext";
-import { Menu } from "lucide-react"; // Use Menu icon as a hamburger menu
+import { Menu, X } from "lucide-react"; // ใช้ X สำหรับปิดเมนู
 import { useGlobalComponent } from "@/providers/GlobalComponents";
 
 import {
@@ -19,97 +19,88 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
+import logoJob from "@/assets/img/logo.png"; // นำเข้าโลโก้
+
 export default function Navbar() {
   const { token, logout } = useAuth();
   const { Button, Avatar, AvatarImage, AvatarFallback } = useGlobalComponent();
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false); // สร้าง state ควบคุมเมนูมือถือ
 
   return (
-    <header className="sticky top-0 z-50 -mb-4 px-4 pb-4">
-      <div className="fade-bottom bg-background/80 absolute left-0 h-24 w-full backdrop-blur-lg "></div>
-      <div className="max-w-container relative mx-auto pl-15 pr-15">
-        <NavbarComponent>
-          <NavbarLeft>
-            <Link
-              href="/board"
-              className="flex items-center gap-2 text-xl font-bold"
-            >
-              <Image src={logoJob} alt="Logo" width={80} height={80} />
+    <header className="sticky top-0 z-50 bg-white shadow-md">
+      <div className="max-w-[1280px] mx-auto px-6">
+        <NavbarComponent className="flex items-center justify-between py-4">
+          {/* Left Side */}
+          <NavbarLeft className="flex items-center gap-6">
+            {/* Logo */}
+            <Link href="/" className="flex items-center">
+              <Image src={logoJob} alt="Logo" width={60} height={60} />
             </Link>
-            {/* เมนูแสดงปกติบน Desktop */}
-            <div className="hidden sm:flex gap-10 font-medium">
-              <Link href={"/board"}>ค้นหางาน</Link>
-              <Link href={"/profile"}>โปรไฟล์</Link>
-              <Link href={"/"}>ครบเครื่องเรื่องงาน</Link>
-              <Link href={"/"}>บริษัททั้งหมด</Link>
-            </div>
+
+            {/* Desktop Navigation */}
+            <nav className="hidden md:flex gap-6 font-medium">
+              <Link href="/board" className="hover:text-blue-600">ค้นหางาน</Link>
+              <Link href="/profile" className="hover:text-blue-600">โปรไฟล์</Link>
+              <Link href="/" className="hover:text-blue-600">ครบเครื่องเรื่องงาน</Link>
+              <Link href="/" className="hover:text-blue-600">บริษัททั้งหมด</Link>
+            </nav>
           </NavbarLeft>
 
-          <NavbarRight>
-            {/* ซ่อนปุ่ม sign in บน Desktop */}
+          {/* Right Side */}
+          <NavbarRight className="flex items-center gap-4">
+            {/* Desktop: Show Sign In or Avatar */}
             {!token ? (
-              <Button
-                variant="default"
-                asChild
-                className="cursor-pointer bg-[#043262]"
-              >
-                <Link href="/login" aria-label="Sign in to your account">
-                  Sign in
-                </Link>
+              <Button variant="default" asChild className="hidden md:flex bg-[#043262]">
+                <Link href="/login">Sign in</Link>
               </Button>
             ) : (
-              // แสดง DropdownMenu บน Desktop
-              <DropdownMenu aria-label="User account menu">
+              <DropdownMenu>
                 <DropdownMenuTrigger>
-                  <div className="cursor-pointer">
-                    <Avatar className="w-[50px] h-[50px]">
-                      <AvatarImage
-                        src="https://github.com/shadcn.png"
-                        alt="User Avatar"
-                      />
-                      <AvatarFallback>U</AvatarFallback>
-                    </Avatar>
-                  </div>
+                  <Avatar className="w-10 h-10 cursor-pointer">
+                    <AvatarImage src="https://github.com/shadcn.png" alt="User Avatar" />
+                    <AvatarFallback>U</AvatarFallback>
+                  </Avatar>
                 </DropdownMenuTrigger>
-                <DropdownMenuContent>
-                  <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                <DropdownMenuContent className="w-48">
+                  <DropdownMenuLabel>บัญชีของฉัน</DropdownMenuLabel>
                   <DropdownMenuSeparator />
-                  <DropdownMenuItem>Profile</DropdownMenuItem>
-                  <DropdownMenuItem>Saved</DropdownMenuItem>
-                  <DropdownMenuItem>Application History</DropdownMenuItem>
-                  <DropdownMenuItem onClick={logout}>Logout</DropdownMenuItem>
+                  <DropdownMenuItem><Link href="/profile">โปรไฟล์</Link></DropdownMenuItem>
+                  <DropdownMenuItem><Link href="/saved">งานที่บันทึก</Link></DropdownMenuItem>
+                  <DropdownMenuItem><Link href="/history">ประวัติการสมัคร</Link></DropdownMenuItem>
+                  <DropdownMenuItem onClick={logout} className="text-red-600">ออกจากระบบ</DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
             )}
 
-            {/* แสดงเมนูสำหรับมือถือ */}
-            <div className="sm:hidden">
-              {/* เงื่อนไขเช็คว่าไม่มี token (ไม่ได้ล็อกอิน) */}
-              {token && (
-                <DropdownMenu aria-label="Mobile menu">
-                  <DropdownMenuTrigger asChild>
-                    <button aria-label="Open menu">
-                      <Menu className="w-[50px] h-[50px] mt-2" />
-                    </button>
-                  </DropdownMenuTrigger>
-                  <DropdownMenuContent>
-                    <DropdownMenuItem>
-                      <Link href={"/board"}>ค้นหางาน</Link>
-                    </DropdownMenuItem>
-                    <DropdownMenuItem>
-                      <Link href={"/"}>โปรไฟล์</Link>
-                    </DropdownMenuItem>
-                    <DropdownMenuItem>
-                      <Link href={"/"}>ครบเครื่องเรื่องงาน</Link>
-                    </DropdownMenuItem>
-                    <DropdownMenuItem>
-                      <Link href={"/"}>บริษัททั้งหมด</Link>
-                    </DropdownMenuItem>
-                  </DropdownMenuContent>
-                </DropdownMenu>
-              )}
-            </div>
+            {/* Mobile Menu Button */}
+            <button
+              className="md:hidden p-2 rounded-md focus:outline-none"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-label="Toggle menu"
+            >
+              {mobileMenuOpen ? <X className="w-8 h-8" /> : <Menu className="w-8 h-8" />}
+            </button>
           </NavbarRight>
         </NavbarComponent>
+
+        {/* Mobile Menu (แสดงเมื่อกดปุ่ม) */}
+        {mobileMenuOpen && (
+          <div className="md:hidden absolute top-16 left-0 w-full bg-white shadow-lg rounded-2xl">
+            <nav className="flex flex-col items-center gap-4 py-6">
+              <Link href="/board" className="hover:text-blue-600" onClick={() => setMobileMenuOpen(false)}>ค้นหางาน</Link>
+              <Link href="/profile" className="hover:text-blue-600" onClick={() => setMobileMenuOpen(false)}>โปรไฟล์</Link>
+              <Link href="/" className="hover:text-blue-600" onClick={() => setMobileMenuOpen(false)}>ครบเครื่องเรื่องงาน</Link>
+              <Link href="/" className="hover:text-blue-600" onClick={() => setMobileMenuOpen(false)}>บริษัททั้งหมด</Link>
+              {!token ? (
+                <Button asChild className="bg-[#043262] w-40" onClick={() => setMobileMenuOpen(false)}>
+                  <Link href="/login">Sign in</Link>
+                </Button>
+              ) : (
+                <button className="text-red-600" onClick={logout}>ออกจากระบบ</button>
+              )}
+            </nav>
+          </div>
+        )}
       </div>
     </header>
   );

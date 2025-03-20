@@ -1,11 +1,14 @@
-"use client";
-import { useLoading } from "@/context/LoadingContext";
-import { useEffect } from "react";
-import { Job } from "../../../types/jobTypes"; // ใช้ types ที่เราเตรียมไว้
-import { useGlobalComponent } from "@/providers/GlobalComponents";
-import Image from "next/image";
+'use client'
+import { useLoading } from '@/context/LoadingContext'
+import { useEffect } from 'react'
+import { Job } from '../../../types/jobTypes' // ใช้ types ที่เราเตรียมไว้
+import { useGlobalComponent } from '@/providers/GlobalComponents'
+import Image from 'next/image'
+import { ArrowLeft } from 'lucide-react'
+import { TextSearch } from 'lucide-react'
+import { Bookmark } from 'lucide-react'
 interface CardDetailProps {
-  job_detail: Job | null | undefined;
+  job_detail: Job | null | undefined
 }
 
 export default function CardDetail({ job_detail }: CardDetailProps) {
@@ -16,13 +19,14 @@ export default function CardDetail({ job_detail }: CardDetailProps) {
     CardHeader,
     CardTitle,
     Card,
-  } = useGlobalComponent();
-  const { setIsLoading } = useLoading();
+    Button
+  } = useGlobalComponent()
+  const { setIsLoading } = useLoading()
 
   useEffect(() => {
-    setIsLoading(true);
-    setTimeout(() => setIsLoading(false), 1000);
-  }, [setIsLoading]);
+    setIsLoading(true)
+    setTimeout(() => setIsLoading(false), 1000)
+  }, [setIsLoading])
 
   return (
     <div className="w-[100%]">
@@ -38,6 +42,14 @@ export default function CardDetail({ job_detail }: CardDetailProps) {
           <CardContent>
             <p>{job_detail.description}</p>
             <CardTitle>
+              <CardTitle className="mt-4 flex gap-4">
+                <Button className="bg-[#043262] text-[16px] w-[100px] cursor-pointer">
+                  สมัคร
+                </Button>
+                <Button className="!bg-[#8fb2d7] text-[16px] w-[100px] flex cursor-pointer">
+                  บันทึก <Bookmark size={15} className="text-center ml-[2px]" />
+                </Button>
+              </CardTitle>
               <h3 className="text-lg font-semibold mt-4">Location</h3>
               <CardDescription>{job_detail.location}</CardDescription>
             </CardTitle>
@@ -45,6 +57,7 @@ export default function CardDetail({ job_detail }: CardDetailProps) {
               <h3 className="text-lg font-semibold mt-4">Salary</h3>
               <CardDescription>{job_detail.salary}</CardDescription>
             </CardTitle>
+
             <CardTitle>
               {/* {job_detail.responsibilities} */}
               {job_detail.responsibilities.length > 0 && (
@@ -107,8 +120,21 @@ export default function CardDetail({ job_detail }: CardDetailProps) {
           </CardFooter>
         </Card>
       ) : (
-        <div></div>
+        <div className=" bg-[white] h-[100vh] p-8">
+          <div className="flex gap-4 items-start h-[20%]">
+            <div>
+              <ArrowLeft size={35} />
+            </div>
+            <div className="text-start">
+              <div className="text-[24px]">เลือกงาน</div>
+              <div className="text-gray-500">แสดงรายละเอียดที่นี่</div>
+            </div>
+          </div>
+          <div className="flex items-center h-[70%] justify-center">
+            <TextSearch size={100} color="#043262" />
+          </div>
+        </div>
       )}
     </div>
-  );
+  )
 }
