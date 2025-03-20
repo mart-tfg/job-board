@@ -38,7 +38,7 @@ export default function Navbar() {
             {/* เมนูแสดงปกติบน Desktop */}
             <div className="hidden sm:flex gap-10 font-medium">
               <Link href={"/board"}>ค้นหางาน</Link>
-              <Link href={"/"}>โปรไฟล์</Link>
+              <Link href={"/profile"}>โปรไฟล์</Link>
               <Link href={"/"}>ครบเครื่องเรื่องงาน</Link>
               <Link href={"/"}>บริษัททั้งหมด</Link>
             </div>

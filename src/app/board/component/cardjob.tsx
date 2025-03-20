@@ -5,7 +5,7 @@ import { useLoading } from "@/context/LoadingContext";
 import { useGlobalComponent } from "@/providers/GlobalComponents";
 import CardDetail from "./../component/carddetail";
 import Image from "next/image";
-import { Job } from "../../../types/jobTypes"; // ใช้ types ที่เราเตรียมไว้
+import { Job } from "../../../types/jobTypes"; 
 
 import {
   Sheet,
